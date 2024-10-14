@@ -13,13 +13,17 @@ function getSongsFromArtist(array, artist){
 };
 
 //Exercise 3: Alphabetic order by title
-function orderAlphabetically(){
-    
+function orderAlphabetically(array){
+    let result = array.map(artist => artist.title).sort().slice(0, 10);
+    console.log("Exercise 3 ->", result);
+    return result;
 };
 
 //Exercise 4: Order by year, ascending
-function orderByYear(){
-    //Write your code here
+function orderByYear(array){
+    let result = array.sort((a, b) => a.year - b.year);
+    console.log("Exercise 4 ->", result);
+    return result;
 };
 
 //Exercise 5: Filter songs by genre
