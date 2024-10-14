@@ -21,14 +21,17 @@ function orderAlphabetically(array){
 
 //Exercise 4: Order by year, ascending
 function orderByYear(array){
-    let result = [...array].sort((a, b) => a.year - b.year || a.title.localeCompare(b.title));
+    let result = array.toSorted((a, b) => a.year - b.year || a.title.localeCompare(b.title));
     console.log("Exercise 4 ->", result);
     return result;
 };
 
 //Exercise 5: Filter songs by genre
-function songsByGenre() {
-    //Write your code here
+function songsByGenre(array, genre) {
+    let result = array.filter(song => song.genre.includes(genre));
+    console.log("Exercise 5 ->", result);
+    return result;
+    
 };
 
 //Exercise 6: Modify the duration of songs to seconds
