@@ -7,12 +7,14 @@ function getAllArtists(array){
 
 //Exercise 2: Get the songs of a certain artist
 function getSongsFromArtist(array, artist){
-    //Write your code here
+    let result = array.filter(song => song.artist == artist);
+    console.log("Exercise 2 ->", result);
+    return result;
 };
 
 //Exercise 3: Alphabetic order by title
 function orderAlphabetically(){
-    //Write your code here
+    
 };
 
 //Exercise 4: Order by year, ascending
