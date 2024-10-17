@@ -35,13 +35,43 @@ function songsByGenre(array, genre) {
 };
 
 //Exercise 6: Modify the duration of songs to seconds
-function minutsToSeconds() {
-    //Write your code here
+function minutsToSeconds(array) {
+    let result = array.map(song => {
+        let durationPattern = /(\d+)min (\d+)sec/;
+        let totalTime = song.duration.match(durationPattern);
+        let minutes = parseInt(totalTime?.[1]) || 0;
+        let seconds = parseInt(totalTime?.[2]) || 0;
+        let totalSeconds = minutes * 60 + seconds;
+        return {
+            ...song,
+            duration: totalSeconds
+        }
+    });
+    console.log("Exercise 6 ->", result);
+    return result;
 };
 
 //Exercise 7: Get the longest song
-function getLongestSong(){
-    //Write your code here
+function getLongestSong(array){
+    let convertToSeconds = (duration) => {
+        let timePattern = /(\d+)min (\d+)sec/;
+        let total = duration.match(timePattern);
+        let min = parseInt(total?.[1]) || 0;
+        let sec = parseInt(total?.[2]) || 0;
+        return min * 60 + sec;
+    };
+    let maxDuration = array.reduce((max, song) => {
+        let totalSec = convertToSeconds(song.duration);
+        return Math.max(max, totalSec);
+    }, -Infinity);
+    let result = array
+        .map(song => ({
+            ...song,
+            duration: convertToSeconds(song.duration)
+        }))
+        .filter(song => song.duration === maxDuration);
+    console.log("Exercise 7 ->", result);
+    return result;
 };
 
 //Exercise 8: Get the shortest song
